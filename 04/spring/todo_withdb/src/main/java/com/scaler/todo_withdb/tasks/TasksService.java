@@ -35,9 +35,14 @@ public class TasksService {
         if (task.getDueDate() != null && task.getDueDate().before(new Date())) {
             throw new TaskInvalidException("Due date must be in the future");
         }
+
+        // TODO: TaskAlreadyExistsException - Implemented
+        if (task.getName() != null && tasksRepository.existsByName(task.getName())) {
+            throw new TaskAlreadyExistsException("name", task.getName());
+        }
+
         var taskEntity = modelMapper.map(task, TaskEntity.class);
         var savedTask = tasksRepository.save(taskEntity);
-        // TODO: TaskAlreadyExistsException
 
         return modelMapper.map(savedTask, TaskDto.class);
     }
@@ -49,8 +54,8 @@ public class TasksService {
     }
 
     static class TaskAlreadyExistsException extends IllegalArgumentException {
-        public TaskAlreadyExistsException(Long id) {
-            super("Task with id " + id + " already exists");
+        public TaskAlreadyExistsException(String attribute, String value) {
+            super("Task with " + attribute + ": '" + value + "' already exists");
         }
     }
 

@@ -38,7 +38,7 @@ public class TasksController {
     }
 
     @PatchMapping("/{id}")
-    void updateTaskById() {
+    void updateTaskById(@PathVariable Long id) {
     }
 
     @ExceptionHandler({
