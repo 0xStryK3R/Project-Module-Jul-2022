@@ -1,18 +1,16 @@
 package com.scaler.todo_withdb.tasks;
 
-import lombok.Data;
 import org.springframework.lang.Nullable;
 
 import java.util.Date;
 
-@Data
-public class TaskDto implements ITaskData {
+public interface ITaskData {
     @Nullable
-    Long id;
+    Long getId();
     @Nullable
-    String name;
+    String getName();
     @Nullable
-    Date dueDate;
+    Date getDueDate();
     @Nullable
-    Boolean done;
+    Boolean getDone();
 }

@@ -14,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class TaskEntity extends BaseEntity {
+public class TaskEntity extends BaseEntity implements ITaskData {
     @Column(name="name", nullable = false)
     String name;
 
@@ -22,7 +22,7 @@ public class TaskEntity extends BaseEntity {
     Date dueDate;
 
     @Column(name = "done", nullable = false, columnDefinition = "boolean default false")
-    boolean done;
+    Boolean done;
 
     @OneToMany(mappedBy = "task", cascade = CascadeType.ALL)
     List<NoteEntity> notes;
