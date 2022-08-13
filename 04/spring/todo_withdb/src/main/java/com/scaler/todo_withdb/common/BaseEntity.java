@@ -13,11 +13,7 @@ public abstract class BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id", nullable = false)
-<<<<<<< HEAD
     private Long id;
-=======
-    Long id;
->>>>>>> 837c8b2b4abe219460ae4ee151a14edcbfed645c
 
     @CreationTimestamp
     Date createdAt;
